@@ -1,0 +1,106 @@
+/* ============================================================
+   Ticker.css — QuantumShield / Ticker
+   Neo-brutalist · CSS custom properties only · no border-radius
+   ============================================================ */
+
+/* ── Outer wrap ─────────────────────────────────────────────── */
+
+.ticker-wrap {
+    display: flex;
+    align-items: stretch;
+    border-top: var(--border-base) solid var(--color-border);
+    border-bottom: var(--border-base) solid var(--color-border);
+    background: var(--color-bg-alt);
+    overflow: hidden;
+}
+
+/* ── Static label ───────────────────────────────────────────── */
+
+.ticker-label {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    padding: var(--space-2) var(--space-5);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    color: var(--color-bg);
+    background: var(--color-primary);
+    border-right: var(--border-base) solid var(--color-border);
+    white-space: nowrap;
+    z-index: 1;
+}
+
+/* ── Scrolling track ────────────────────────────────────────── */
+
+.ticker-track {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    flex: 1;
+    /* fade edges into bg */
+    mask-image: linear-gradient(to right,
+            transparent 0%,
+            black 4%,
+            black 96%,
+            transparent 100%);
+    -webkit-mask-image: linear-gradient(to right,
+            transparent 0%,
+            black 4%,
+            black 96%,
+            transparent 100%);
+}
+
+/* ── Duplicated group (two copies = seamless loop) ──────────── */
+
+.ticker-group {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    animation: ticker-scroll 28s linear infinite;
+    will-change: transform;
+    flex-shrink: 0;
+}
+
+@keyframes ticker-scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+/* ── Individual items ───────────────────────────────────────── */
+
+.ticker-item {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    line-height: var(--lh-xs);
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+    padding: var(--space-2) var(--space-6);
+    position: relative;
+}
+
+/* Separator dot between items */
+.ticker-item::after {
+    content: "·";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-border-muted);
+}
+
+/* Highlight key values — anything after the colon */
+.ticker-item:nth-child(3n+1) {
+    color: var(--color-text);
+}
+
+/* Pause on hover */
+.ticker-wrap:hover .ticker-group {
+    animation-play-state: paused;
+}

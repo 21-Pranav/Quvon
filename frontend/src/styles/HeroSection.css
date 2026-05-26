@@ -1,0 +1,207 @@
+/* ============================================================
+   HeroSection.css — QuantumShield / HeroSection + TerminalPanel
+   Neo-brutalist · CSS custom properties only · no border-radius
+   ============================================================ */
+
+/* ── Section shell ─────────────────────────────────────────── */
+
+.hero {
+    padding: var(--space-16) var(--space-20);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+}
+
+/* ── Tag ────────────────────────────────────────────────────── */
+
+.hero-tag {
+    display: inline-flex;
+    align-self: flex-start;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    line-height: var(--lh-xs);
+    letter-spacing: 0.1em;
+    color: var(--color-text-subtle);
+    border: var(--border-thin) solid var(--color-border-muted);
+    padding: var(--space-1) var(--space-3);
+}
+
+.hero-tag::before {
+    content: "// ";
+    color: var(--color-primary);
+}
+
+/* ── Heading ────────────────────────────────────────────────── */
+
+.hero-heading {
+    font-family: var(--font-heading);
+    font-size: var(--text-5xl);
+    line-height: var(--lh-5xl);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--color-text);
+    margin: 0;
+}
+
+.hero-heading .accent {
+    color: transparent;
+    -webkit-text-stroke: var(--border-base) var(--color-primary);
+}
+
+.hero-heading .dim {
+    color: var(--color-border-muted);
+    -webkit-text-stroke: 0;
+}
+
+/* ── Two-column layout ──────────────────────────────────────── */
+
+.hero-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-10);
+    align-items: start;
+    margin-top: var(--space-4);
+}
+
+/* ── Description block ──────────────────────────────────────── */
+
+.hero-desc {
+    border-left: var(--border-heavy) solid var(--color-primary);
+    padding-left: var(--space-5);
+    margin-bottom: var(--space-8);
+}
+
+.hero-desc p {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    line-height: var(--lh-base);
+    color: var(--color-text-muted);
+    margin: 0;
+}
+
+.hero-desc strong {
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+/* ── Button row ─────────────────────────────────────────────── */
+
+.btn-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+}
+
+/* ── Terminal panel ─────────────────────────────────────────── */
+
+.terminal {
+    border: var(--border-base) solid var(--color-border);
+    box-shadow: 6px 6px 0 var(--color-border);
+    background: var(--color-elevated);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    line-height: 1.9;
+    overflow: hidden;
+}
+
+/* ── Terminal title bar ─────────────────────────────────────── */
+
+.terminal-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-bg-alt);
+    border-bottom: var(--border-base) solid var(--color-border);
+}
+
+.t-dot {
+    width: 8px;
+    height: 8px;
+    border: var(--border-thin) solid var(--color-border-muted);
+    flex-shrink: 0;
+}
+
+.t-dot.red    { background: var(--color-danger); }
+.t-dot.yellow { background: var(--color-warning); }
+.t-dot.green  { background: var(--color-success); }
+
+.terminal-title {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    color: var(--color-text-subtle);
+}
+
+/* ── Terminal body ──────────────────────────────────────────── */
+
+.terminal-body {
+    padding: var(--space-5) var(--space-6);
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Lines ──────────────────────────────────────────────────── */
+
+.t-line {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    color: var(--color-text-muted);
+    white-space: pre;
+}
+
+.t-prompt {
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+.t-cmd {
+    color: var(--color-text);
+}
+
+.t-out {
+    color: var(--color-text-subtle);
+    padding-left: var(--space-4);
+}
+
+.t-ok {
+    color: var(--color-success);
+    padding-left: var(--space-4);
+}
+
+.t-warn {
+    color: var(--color-warning);
+    padding-left: var(--space-4);
+}
+
+/* ── Blinking cursor ────────────────────────────────────────── */
+
+.t-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 14px;
+    background: var(--color-primary);
+    animation: blink 1s step-end infinite;
+    vertical-align: middle;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+
+@media (max-width: 860px) {
+    .hero-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-heading {
+        font-size: var(--text-4xl);
+        line-height: var(--lh-4xl);
+    }
+}

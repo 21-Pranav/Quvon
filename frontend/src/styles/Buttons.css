@@ -1,0 +1,175 @@
+/* =========================
+   BUTTON BASE
+========================= */
+
+.btn {
+    --btn-bg: var(--primary);
+    --btn-text: #000;
+    --btn-border: #000;
+    --btn-shadow: var(--text);
+
+    --btn-padding-y: 14px;
+    --btn-padding-x: 28px;
+
+    --btn-font-size: 14px;
+    --btn-shadow-size: 6px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding:
+        var(--btn-padding-y) var(--btn-padding-x);
+
+    background: var(--btn-bg);
+    color: var(--btn-text);
+
+    border: 3px solid var(--btn-border);
+
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: var(--btn-font-size);
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    box-shadow:
+        var(--btn-shadow-size) var(--btn-shadow-size) 0 var(--btn-shadow);
+
+    transition:
+        transform 120ms var(--easing-brutalist),
+        box-shadow 120ms var(--easing-brutalist);
+
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: translate(3px, 3px);
+
+    box-shadow:
+        calc(var(--btn-shadow-size) - 3px) calc(var(--btn-shadow-size) - 3px) 0 var(--btn-shadow);
+}
+
+.btn:active {
+    transform: translate(6px, 6px);
+
+    box-shadow: 0 0 0 var(--btn-shadow);
+}
+
+/* =========================
+   VARIANTS
+========================= */
+
+.btn-primary {
+    --btn-bg: var(--color-primary);
+    --btn-text: #000;
+    --btn-border: #000;
+    --btn-shadow: var(--color-text);
+}
+
+.btn-secondary {
+    --btn-bg: transparent;
+    --btn-text: var(--color-primary);
+    --btn-border: var(--color-primary);
+    --btn-shadow: rgba(0, 212, 126, 0.25);
+}
+
+.btn-danger {
+    --btn-bg: var(--color-danger);
+    --btn-text: white;
+    --btn-border: #000;
+    --btn-shadow: rgba(255, 82, 82, 0.35);
+}
+
+.btn-warning {
+    --btn-bg: var(--color-warning);
+    --btn-text: #000;
+    --btn-border: #000;
+    --btn-shadow: rgba(255, 191, 0, 0.35);
+}
+
+.btn-info {
+    --btn-bg: var(--color-info);
+    --btn-text: #000;
+    --btn-border: #000;
+    --btn-shadow: rgba(0, 194, 255, 0.35);
+}
+
+.btn-experimental {
+    --btn-bg: var(--color-experimental);
+    --btn-text: white;
+    --btn-border: #000;
+    --btn-shadow: rgba(139, 92, 246, 0.35);
+}
+
+/* =========================
+   SIZES
+========================= */
+
+.btn-xs {
+    --btn-padding-y: 8px;
+    --btn-padding-x: 14px;
+
+    --btn-font-size: 11px;
+    --btn-shadow-size: 3px;
+}
+
+.btn-sm {
+    --btn-padding-y: 10px;
+    --btn-padding-x: 18px;
+
+    --btn-font-size: 12px;
+    --btn-shadow-size: 4px;
+}
+
+.btn-md {
+    --btn-padding-y: 14px;
+    --btn-padding-x: 28px;
+
+    --btn-font-size: 14px;
+    --btn-shadow-size: 6px;
+}
+
+.btn-lg {
+    --btn-padding-y: 18px;
+    --btn-padding-x: 36px;
+
+    --btn-font-size: 16px;
+    --btn-shadow-size: 8px;
+}
+
+.btn-xl {
+    --btn-padding-y: 22px;
+    --btn-padding-x: 44px;
+
+    --btn-font-size: 18px;
+    --btn-shadow-size: 10px;
+}
+
+/* =========================
+   UTILITIES
+========================= */
+
+.btn-full {
+    width: 100%;
+}
+
+.btn-square {
+    aspect-ratio: 1;
+    padding-inline: 0;
+}
+
+.btn-disabled,
+.btn:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.btn-pill {
+    border-radius: 999px;
+}
+
+.btn-sharp {
+    border-radius: 0;
+}

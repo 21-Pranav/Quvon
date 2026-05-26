@@ -1,0 +1,372 @@
+/* =========================================================
+   CARD SYSTEM
+   Neo-Brutalist Reusable Cards
+========================================================= */
+
+/* =========================
+   CARD BASE
+========================= */
+
+.card {
+    --card-bg: var(--color-surface);
+
+    --card-border: var(--color-border);
+
+    --card-shadow: var(--color-border);
+
+    --card-padding: var(--space-6);
+
+    --card-shadow-size: 6px;
+
+    --card-radius: 0px;
+
+    --card-border-width: var(--border-base);
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+
+    background: var(--card-bg);
+
+    border:
+        var(--card-border-width) solid var(--card-border);
+
+    border-radius: var(--card-radius);
+
+    padding: var(--card-padding);
+
+    box-shadow:
+        var(--card-shadow-size) var(--card-shadow-size) 0 var(--card-shadow);
+
+    transition:
+        transform 120ms var(--easing),
+        box-shadow 120ms var(--easing),
+        border-color 120ms var(--easing),
+        background 120ms var(--easing);
+}
+
+/* =========================
+   INTERACTIONS
+========================= */
+
+.card-hover:hover {
+    transform: translate(-2px, -2px);
+
+    box-shadow:
+        calc(var(--card-shadow-size) + 2px) calc(var(--card-shadow-size) + 2px) 0 var(--card-shadow);
+}
+
+.card-press:active {
+    transform: translate(4px, 4px);
+
+    box-shadow: 0 0 0 var(--card-shadow);
+}
+
+.card-clickable {
+    cursor: pointer;
+}
+
+/* =========================
+   VARIANTS
+========================= */
+
+.card-neutral {
+    --card-bg: var(--color-surface);
+
+    --card-border: var(--color-border-muted);
+
+    --card-shadow: var(--color-border-muted);
+}
+
+.card-primary {
+    --card-bg:
+        color-mix(in srgb,
+            var(--color-primary) 8%,
+            var(--color-surface));
+
+    --card-border: var(--color-primary);
+
+    --card-shadow: var(--color-primary);
+}
+
+.card-success {
+    --card-bg:
+        color-mix(in srgb,
+            var(--color-success) 8%,
+            var(--color-surface));
+
+    --card-border: var(--color-success);
+
+    --card-shadow: var(--color-success);
+}
+
+.card-info {
+    --card-bg:
+        color-mix(in srgb,
+            var(--color-info) 8%,
+            var(--color-surface));
+
+    --card-border: var(--color-info);
+
+    --card-shadow: var(--color-info);
+}
+
+.card-warning {
+    --card-bg:
+        color-mix(in srgb,
+            var(--color-warning) 10%,
+            var(--color-surface));
+
+    --card-border: var(--color-warning);
+
+    --card-shadow: var(--color-warning);
+}
+
+.card-danger {
+    --card-bg:
+        color-mix(in srgb,
+            var(--color-danger) 10%,
+            var(--color-surface));
+
+    --card-border: var(--color-danger);
+
+    --card-shadow: var(--color-danger);
+}
+
+.card-experimental {
+    --card-bg:
+        color-mix(in srgb,
+            var(--color-experimental) 10%,
+            var(--color-surface));
+
+    --card-border: var(--color-experimental);
+
+    --card-shadow: var(--color-experimental);
+}
+
+.card-highlight {
+    --card-bg:
+        color-mix(in srgb,
+            var(--color-highlight) 10%,
+            var(--color-surface));
+
+    --card-border: var(--color-highlight);
+
+    --card-shadow: var(--color-highlight);
+}
+
+/* =========================
+   SURFACE MODES
+========================= */
+
+.card-solid {
+    background: var(--card-border);
+    color: var(--color-background);
+}
+
+.card-outline {
+    background: transparent;
+}
+
+.card-ghost {
+    background: transparent;
+    border-style: dashed;
+    box-shadow: none;
+}
+
+.card-flat {
+    box-shadow: none;
+}
+
+/* =========================
+   SIZES
+========================= */
+
+.card-xs {
+    --card-padding: var(--space-3);
+
+    --card-shadow-size: 2px;
+}
+
+.card-sm {
+    --card-padding: var(--space-4);
+
+    --card-shadow-size: 4px;
+}
+
+.card-md {
+    --card-padding: var(--space-6);
+
+    --card-shadow-size: 6px;
+}
+
+.card-lg {
+    --card-padding: var(--space-8);
+
+    --card-shadow-size: 8px;
+}
+
+.card-xl {
+    --card-padding: var(--space-10);
+
+    --card-shadow-size: 10px;
+}
+
+/* =========================
+   SHAPES
+========================= */
+
+.card-rounded {
+    --card-radius: 12px;
+}
+
+.card-pill {
+    --card-radius: 999px;
+}
+
+.card-sharp {
+    --card-radius: 0px;
+}
+
+/* =========================
+   BORDER STYLES
+========================= */
+
+.card-thin {
+    --card-border-width: var(--border-thin);
+}
+
+.card-thick {
+    --card-border-width: var(--border-heavy);
+}
+
+.card-dashed {
+    border-style: dashed;
+}
+
+.card-double {
+    border-style: double;
+}
+
+/* =========================
+   EFFECTS
+========================= */
+
+.card-glow {
+    box-shadow:
+        0 0 0 2px var(--card-shadow),
+        var(--card-shadow-size) var(--card-shadow-size) 0 var(--card-shadow);
+}
+
+.card-inset {
+    box-shadow:
+        inset 0 0 0 2px var(--card-shadow);
+}
+
+.card-floating {
+    transform: rotate(-1deg);
+}
+
+.card-floating:hover {
+    transform: rotate(0deg) translate(-2px, -2px);
+}
+
+/* =========================
+   LAYOUT UTILITIES
+========================= */
+
+.card-full {
+    width: 100%;
+}
+
+.card-fit {
+    width: fit-content;
+}
+
+.card-center {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.card-row {
+    flex-direction: row;
+    align-items: center;
+}
+
+.card-space-between {
+    justify-content: space-between;
+}
+
+/* =========================
+   CARD SECTIONS
+========================= */
+
+.card-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+
+    padding-bottom: var(--space-4);
+
+    border-bottom:
+        var(--border-thin) solid var(--color-border-muted);
+}
+
+.card-title {
+    font-family: var(--font-heading);
+
+    font-size: var(--text-xl);
+
+    line-height: var(--lh-xl);
+
+    font-weight: 700;
+
+    color: var(--color-text);
+}
+
+.card-subtitle {
+    font-family: var(--font-mono);
+
+    font-size: var(--text-xs);
+
+    line-height: var(--lh-xs);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.08em;
+
+    color: var(--color-text-subtle);
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.card-footer {
+    padding-top: var(--space-4);
+
+    border-top:
+        var(--border-thin) solid var(--color-border-muted);
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--space-3);
+}
+
+/* =========================
+   DISABLED
+========================= */
+
+.card-disabled {
+    opacity: 0.5;
+
+    pointer-events: none;
+
+    filter: grayscale(0.4);
+}

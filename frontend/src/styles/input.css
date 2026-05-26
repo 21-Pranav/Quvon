@@ -1,0 +1,401 @@
+/* =========================================================
+   INPUT SYSTEM
+   Neo-Brutalist Reusable Inputs
+========================================================= */
+
+/* =========================
+   INPUT BASE
+========================= */
+
+.input {
+    --input-bg: var(--color-background);
+
+    --input-text: var(--color-text);
+
+    --input-placeholder: var(--color-text-subtle);
+
+    --input-border: var(--color-border-muted);
+
+    --input-focus: var(--color-primary);
+
+    --input-shadow: var(--color-primary);
+
+    --input-height: 52px;
+
+    --input-padding-x: var(--space-5);
+
+    --input-font-size: var(--text-sm);
+
+    --input-shadow-size: 4px;
+
+    --input-radius: 0px;
+
+    --input-border-width: var(--border-base);
+
+    width: 100%;
+
+    height: var(--input-height);
+
+    background: var(--input-bg);
+
+    color: var(--input-text);
+
+    border:
+        var(--input-border-width) solid var(--input-border);
+
+    border-radius: var(--input-radius);
+
+    padding-inline: var(--input-padding-x);
+
+    outline: none;
+
+    font-family: var(--font-mono);
+
+    font-size: var(--input-font-size);
+
+    line-height: 1;
+
+    transition:
+        border-color 120ms var(--easing),
+        box-shadow 120ms var(--easing),
+        transform 120ms var(--easing),
+        background 120ms var(--easing);
+}
+
+/* =========================
+   PLACEHOLDER
+========================= */
+
+.input::placeholder {
+    color: var(--input-placeholder);
+}
+
+/* =========================
+   FOCUS
+========================= */
+
+.input:focus {
+    border-color: var(--input-focus);
+
+    box-shadow:
+        var(--input-shadow-size) var(--input-shadow-size) 0 var(--input-shadow);
+
+    transform: translate(-1px, -1px);
+}
+
+/* =========================
+   HOVER
+========================= */
+
+.input-hover:hover {
+    border-color: var(--color-border);
+}
+
+/* =========================
+   VARIANTS
+========================= */
+
+.input-primary {
+    --input-focus: var(--color-primary);
+
+    --input-shadow: var(--color-primary);
+}
+
+.input-info {
+    --input-focus: var(--color-info);
+
+    --input-shadow: var(--color-info);
+}
+
+.input-success {
+    --input-focus: var(--color-success);
+
+    --input-shadow: var(--color-success);
+}
+
+.input-warning {
+    --input-focus: var(--color-warning);
+
+    --input-shadow: var(--color-warning);
+}
+
+.input-danger {
+    --input-focus: var(--color-danger);
+
+    --input-shadow: var(--color-danger);
+}
+
+.input-experimental {
+    --input-focus: var(--color-experimental);
+
+    --input-shadow: var(--color-experimental);
+}
+
+.input-highlight {
+    --input-focus: var(--color-highlight);
+
+    --input-shadow: var(--color-highlight);
+}
+
+/* =========================
+   SURFACE MODES
+========================= */
+
+.input-solid {
+    --input-bg: var(--color-surface);
+}
+
+.input-transparent {
+    --input-bg: transparent;
+}
+
+.input-muted {
+    --input-bg: var(--color-background-alt);
+
+    --input-border: var(--color-border-muted);
+}
+
+/* =========================
+   SIZES
+========================= */
+
+.input-xs {
+    --input-height: 34px;
+
+    --input-padding-x: var(--space-3);
+
+    --input-font-size: var(--text-xs);
+
+    --input-shadow-size: 2px;
+}
+
+.input-sm {
+    --input-height: 42px;
+
+    --input-padding-x: var(--space-4);
+
+    --input-font-size: var(--text-xs);
+
+    --input-shadow-size: 3px;
+}
+
+.input-md {
+    --input-height: 52px;
+
+    --input-padding-x: var(--space-5);
+
+    --input-font-size: var(--text-sm);
+
+    --input-shadow-size: 4px;
+}
+
+.input-lg {
+    --input-height: 64px;
+
+    --input-padding-x: var(--space-6);
+
+    --input-font-size: var(--text-base);
+
+    --input-shadow-size: 5px;
+}
+
+.input-xl {
+    --input-height: 76px;
+
+    --input-padding-x: var(--space-8);
+
+    --input-font-size: var(--text-lg);
+
+    --input-shadow-size: 6px;
+}
+
+/* =========================
+   SHAPES
+========================= */
+
+.input-rounded {
+    --input-radius: 12px;
+}
+
+.input-pill {
+    --input-radius: 999px;
+}
+
+.input-sharp {
+    --input-radius: 0px;
+}
+
+/* =========================
+   BORDER STYLES
+========================= */
+
+.input-thin {
+    --input-border-width: var(--border-thin);
+}
+
+.input-thick {
+    --input-border-width: var(--border-heavy);
+}
+
+.input-dashed {
+    border-style: dashed;
+}
+
+.input-double {
+    border-style: double;
+}
+
+/* =========================
+   STATES
+========================= */
+
+.input-disabled,
+.input:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+
+    pointer-events: none;
+}
+
+.input-error {
+    --input-border: var(--color-danger);
+
+    --input-focus: var(--color-danger);
+
+    --input-shadow: var(--color-danger);
+}
+
+.input-success-state {
+    --input-border: var(--color-success);
+
+    --input-focus: var(--color-success);
+
+    --input-shadow: var(--color-success);
+}
+
+/* =========================
+   TEXTAREA
+========================= */
+
+.textarea {
+    min-height: 140px;
+
+    padding-block: var(--space-4);
+
+    resize: vertical;
+
+    line-height: var(--lh-base);
+}
+
+/* =========================
+   LABELS
+========================= */
+
+.input-label {
+    display: inline-flex;
+
+    margin-bottom: var(--space-2);
+
+    font-family: var(--font-mono);
+
+    font-size: var(--text-xs);
+
+    line-height: var(--lh-xs);
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.08em;
+
+    color: var(--color-text-muted);
+}
+
+/* =========================
+   HELPERS
+========================= */
+
+.input-helper {
+    margin-top: var(--space-2);
+
+    font-family: var(--font-mono);
+
+    font-size: var(--text-xs);
+
+    line-height: var(--lh-xs);
+
+    color: var(--color-text-subtle);
+}
+
+.input-helper-danger {
+    color: var(--color-danger);
+}
+
+.input-helper-success {
+    color: var(--color-success);
+}
+
+.input-helper-warning {
+    color: var(--color-warning);
+}
+
+/* =========================
+   INPUT GROUP
+========================= */
+
+.input-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--space-2);
+
+    width: 100%;
+}
+
+.input-row {
+    display: flex;
+
+    align-items: center;
+
+    gap: var(--space-3);
+}
+
+/* =========================
+   ICON INPUTS
+========================= */
+
+.input-icon-wrap {
+    position: relative;
+
+    width: 100%;
+}
+
+.input-icon {
+    position: absolute;
+
+    top: 50%;
+
+    left: var(--space-4);
+
+    transform: translateY(-50%);
+
+    color: var(--color-text-subtle);
+
+    pointer-events: none;
+}
+
+.input-with-icon {
+    padding-left: calc(var(--space-8) + var(--space-5));
+}
+
+/* =========================
+   GLOW EFFECT
+========================= */
+
+.input-glow:focus {
+    box-shadow:
+        0 0 0 2px var(--input-shadow),
+        var(--input-shadow-size) var(--input-shadow-size) 0 var(--input-shadow);
+}

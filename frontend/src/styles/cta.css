@@ -1,0 +1,149 @@
+/* ============================================================
+   cta.css — QuantumShield / CTASection
+   Neo-brutalist · CSS custom properties only · no border-radius
+   ============================================================ */
+
+/* ── Section shell ─────────────────────────────────────────── */
+
+.cta-section {
+    padding: var(--space-10) var(--space-8);
+    position: relative;
+    overflow: hidden;
+}
+
+/* ── Main block ─────────────────────────────────────────────── */
+
+.cta-block {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: var(--space-12) auto 0;
+    gap: var(--space-12);
+    padding: var(--space-12) var(--space-10);
+    border: var(--border-base) solid var(--color-border);
+    background: var(--color-surface);
+    box-shadow: 8px 8px 0 var(--color-border);
+    overflow: hidden;
+    transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.cta-block:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 10px 10px 0 var(--color-border);
+}
+
+/* Emerald top stripe */
+.cta-block::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--border-heavy);
+    background: var(--color-primary);
+}
+
+/* Subtle scanline texture — reinforces the encryption/terminal theme */
+.cta-block::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(0deg,
+            transparent,
+            transparent 3px,
+            color-mix(in srgb, var(--color-primary) 3%, transparent) 3px,
+            color-mix(in srgb, var(--color-primary) 3%, transparent) 4px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Keep content above scanlines */
+.cta-heading,
+.cta-right {
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Corner brackets ────────────────────────────────────────── */
+
+.bracket-tl,
+.bracket-br {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-color: var(--color-primary);
+    z-index: 2;
+}
+
+.bracket-tl {
+    top: calc(var(--border-heavy) + var(--space-3));
+    left: var(--space-3);
+    border-top: var(--border-base) solid;
+    border-left: var(--border-base) solid;
+}
+
+.bracket-br {
+    bottom: var(--space-3);
+    right: var(--space-3);
+    border-bottom: var(--border-base) solid;
+    border-right: var(--border-base) solid;
+}
+
+/* ── Heading ────────────────────────────────────────────────── */
+
+.cta-heading {
+    font-family: var(--font-heading);
+    font-size: var(--text-5xl);
+    line-height: var(--lh-5xl);
+    font-weight: 700;
+    color: var(--color-text);
+    letter-spacing: -0.03em;
+    margin: 0;
+}
+
+.cta-heading .accent {
+    color: transparent;
+    -webkit-text-stroke: var(--border-base) var(--color-primary);
+}
+
+/* ── Right column ───────────────────────────────────────────── */
+
+.cta-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+    flex-shrink: 0;
+    min-width: 220px;
+}
+
+/* ── Note line ──────────────────────────────────────────────── */
+
+.cta-note {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    line-height: var(--lh-xs);
+    color: var(--color-text-subtle);
+    letter-spacing: 0.04em;
+    margin: 0;
+}
+
+/* ── Responsive collapse ────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    .cta-block {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cta-heading {
+        font-size: var(--text-4xl);
+        line-height: var(--lh-4xl);
+    }
+
+    .cta-right {
+        width: 100%;
+    }
+}

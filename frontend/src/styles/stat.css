@@ -1,0 +1,201 @@
+/*
+ * stat.css
+ * Neo-brutalist — Stats Section
+ * Inherits CSS custom properties from dashboard.css token map.
+ * ─────────────────────────────────────────────────────────
+ */
+
+/* ── SECTION SHELL ───────────────────────────────────────── */
+.stats-section {
+    padding: var(--space-10) var(--space-8);
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+/* ── STATS GRID ──────────────────────────────────────────── */
+.stats-grid {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: var(--space-12) auto 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: var(--border-base) solid var(--color-border);
+    box-shadow: 8px 8px 0 var(--color-border);
+    background: var(--color-bg-alt);
+}
+
+/* ── CORNER BRACKETS ─────────────────────────────────────── */
+/* neo-brut decorative corners — outside the grid box */
+.bracket-tl,
+.bracket-br {
+    position: absolute;
+    width: var(--space-8);
+    height: var(--space-8);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.bracket-tl {
+    top: calc(-1 * var(--space-5));
+    left: calc(-1 * var(--space-5));
+    border-top: var(--border-heavy) solid var(--color-primary);
+    border-left: var(--border-heavy) solid var(--color-primary);
+}
+
+.bracket-br {
+    bottom: calc(-1 * var(--space-5));
+    right: calc(-1 * var(--space-5));
+    border-bottom: var(--border-heavy) solid var(--color-primary);
+    border-right: var(--border-heavy) solid var(--color-primary);
+}
+
+/* ── STAT ITEM ───────────────────────────────────────────── */
+.stat-item {
+    padding: var(--space-10) var(--space-8);
+    border-right: var(--border-thin) solid var(--color-border-muted);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    position: relative;
+    transition: background 120ms ease;
+    cursor: default;
+}
+
+/* no right border on last item */
+.stat-item:last-child {
+    border-right: none;
+}
+
+/* emerald top bar on hover — neo-brut interaction */
+.stat-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--border-heavy);
+    background: var(--color-primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 200ms ease;
+}
+
+.stat-item:hover::before {
+    transform: scaleX(1);
+}
+
+.stat-item:hover {
+    background: color-mix(in srgb, var(--color-primary) 4%, var(--color-bg-alt));
+}
+
+/* ── STAT VALUE ──────────────────────────────────────────── */
+.stat-val {
+    font-family: var(--font-heading);
+    font-size: var(--text-4xl);
+    line-height: 1;
+    font-weight: 700;
+    color: var(--color-primary);
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-1);
+
+    /* outlined ghost number — neo-brut signature */
+    -webkit-text-stroke: var(--border-thin) var(--color-primary);
+}
+
+.stat-unit {
+    font-family: var(--font-mono);
+    font-size: var(--text-lg);
+    line-height: var(--lh-lg);
+    font-weight: 400;
+    color: var(--color-primary);
+    -webkit-text-stroke: 0;
+    opacity: 0.7;
+}
+
+/* ── STAT LABEL ──────────────────────────────────────────── */
+.stat-label {
+    font-family: var(--font-heading);
+    font-size: var(--text-md);
+    line-height: var(--lh-md);
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+/* ── STAT SUB ────────────────────────────────────────────── */
+.stat-sub {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    line-height: var(--lh-xs);
+    color: var(--color-text-subtle);
+    letter-spacing: 0.06em;
+
+    /* left rule — raw editorial mark */
+    border-left: var(--border-thick) solid var(--color-border-muted);
+    padding-left: var(--space-3);
+    margin-top: var(--space-2);
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 900px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* restore right border on 2-col layout */
+    .stat-item:last-child {
+        border-right: var(--border-thin) solid var(--color-border-muted);
+    }
+
+    /* re-remove on actual last of each row */
+    .stat-item:nth-child(2n) {
+        border-right: none;
+    }
+
+    /* horizontal divider between rows */
+    .stat-item:nth-child(n+3) {
+        border-top: var(--border-thin) solid var(--color-border-muted);
+    }
+
+    .stat-val {
+        font-size: var(--text-3xl);
+    }
+}
+
+@media (max-width: 560px) {
+    .stats-section {
+        padding: var(--space-12) var(--space-4);
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        box-shadow: 5px 5px 0 var(--color-border);
+    }
+
+    .stat-item {
+        border-right: none;
+        border-bottom: var(--border-thin) solid var(--color-border-muted);
+        padding: var(--space-8) var(--space-6);
+    }
+
+    .stat-item:last-child {
+        border-bottom: none;
+    }
+
+    /* reset nth rules from 2-col */
+    .stat-item:nth-child(2n) {
+        border-right: none;
+    }
+
+    .stat-item:nth-child(n+3) {
+        border-top: none;
+    }
+
+    .stat-val {
+        font-size: var(--text-2xl);
+        line-height: var(--lh-2xl);
+    }
+}

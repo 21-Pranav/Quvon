@@ -1,0 +1,212 @@
+/* ============================================================
+   features.css — QuantumShield / FeaturesSection + FeatureCard
+   Neo-brutalist · CSS custom properties only · no border-radius
+   ============================================================ */
+
+/* ── Section shell ─────────────────────────────────────────── */
+
+.features-section {
+    padding: var(--space-10) var(--space-8);
+    position: relative;
+    overflow: hidden;
+}
+
+/* ── Grid wrapper ───────────────────────────────────────────── */
+
+.features-grid {
+    position: relative;
+    z-index: 1;
+    max-width: 1400px;
+    margin: var(--space-12) auto 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: var(--border-base) solid var(--color-border);
+    box-shadow: 8px 8px 0 var(--color-border);
+    background: var(--color-bg-alt);
+}
+
+/* ── Topbar ─────────────────────────────────────────────────── */
+
+.features-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-3) var(--space-6);
+    border-bottom: var(--border-base) solid var(--color-border);
+    background: var(--color-bg-alt);
+}
+
+.features-topbar-left,
+.features-topbar-right {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    line-height: var(--lh-xs);
+    color: var(--color-text-muted);
+    letter-spacing: 0.08em;
+}
+
+.features-topbar-left::before {
+    content: "// ";
+    color: var(--color-primary);
+}
+
+.features-topbar-right {
+    color: var(--color-text-subtle);
+}
+
+/* ── Card grid layout ───────────────────────────────────────── */
+
+.features-grid > .feature-card {
+    border-top: var(--border-base) solid var(--color-border-muted);
+}
+
+.features-grid > .feature-card:first-of-type {
+    border-top: var(--border-base) solid var(--color-border);
+}
+
+@media (min-width: 900px) {
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto 1fr;
+    }
+
+    /* Topbar spans full width */
+    .features-topbar {
+        grid-column: 1 / -1;
+    }
+
+    /* Cards sit side-by-side, separated by vertical borders */
+    .features-grid > .feature-card {
+        border-top: none;
+        border-right: var(--border-base) solid var(--color-border-muted);
+    }
+
+    .features-grid > .feature-card:last-of-type {
+        border-right: none;
+    }
+}
+
+/* ── Feature card ───────────────────────────────────────────── */
+
+.feature-card {
+    position: relative;
+    padding: var(--space-8) var(--space-6) var(--space-10);
+    background: var(--color-surface);
+    overflow: hidden;
+    cursor: default;
+    transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+}
+
+.feature-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 var(--color-border);
+    background: var(--color-surface-hover);
+}
+
+.feature-card:active {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+}
+
+/* Emerald top accent stripe ----------------------------------- */
+
+.feature-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--border-heavy);
+    background: var(--color-primary);
+}
+
+/* ── Card number (outlined stroke signature) ─────────────────── */
+
+.feature-num {
+    font-family: var(--font-mono);
+    font-size: var(--text-4xl);
+    line-height: 1;
+    font-weight: 700;
+    color: transparent;
+    -webkit-text-stroke: var(--border-base) var(--color-border-muted);
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-6);
+    user-select: none;
+}
+
+/* ── Tag row ────────────────────────────────────────────────── */
+
+.feature-icon-row {
+    margin-bottom: var(--space-4);
+}
+
+.feature-tag {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    line-height: var(--lh-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    /* color comes from inline `style={{ color: accent }}` */
+}
+
+/* ── Title ──────────────────────────────────────────────────── */
+
+.feature-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    line-height: var(--lh-xl);
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0 0 var(--space-4);
+    letter-spacing: -0.01em;
+}
+
+/* ── Description ────────────────────────────────────────────── */
+
+.feature-desc {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    line-height: var(--lh-sm);
+    color: var(--color-text-muted);
+    margin: 0 0 var(--space-8);
+}
+
+/* ── Accent sweep bar ───────────────────────────────────────── */
+
+.feature-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: var(--border-base);
+    width: 100%;
+    transform-origin: left center;
+    transform: scaleX(0);
+    transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+    /* background color comes from inline `style={{ background: accent }}` */
+}
+
+.feature-card:hover .feature-bar {
+    transform: scaleX(1);
+}
+
+/* ── TL bracket corner ──────────────────────────────────────── */
+
+.bracket-tl {
+    position: absolute;
+    top: calc(var(--border-heavy) + var(--space-3));
+    left: var(--space-3);
+    width: 14px;
+    height: 14px;
+    border-top: var(--border-base) solid;
+    border-left: var(--border-base) solid;
+    /* borderColor comes from inline `style={{ borderColor: accent }}` */
+    opacity: 0;
+    transition: opacity 200ms ease, transform 200ms ease;
+    transform: translate(-3px, -3px);
+}
+
+.feature-card:hover .bracket-tl {
+    opacity: 1;
+    transform: translate(0, 0);
+}

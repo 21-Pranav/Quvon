@@ -1,0 +1,62 @@
+
+
+
+
+/* ============================================================
+   SectionDivider.css — QuantumShield / SectionDivider
+   Neo-brutalist · CSS custom properties only · no border-radius
+   ============================================================ */
+
+.section-divider {
+    display: flex;
+    align-items: center;
+    margin-top: var(--space-20);
+    margin-bottom: var(--space-8);
+}
+
+.divider-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    line-height: var(--lh-xs);
+    letter-spacing: 0.18em;
+    white-space: nowrap;
+    color: var(--color-bg);
+    background: var(--color-primary);
+    padding: var(--space-2) var(--space-6);
+    border: var(--border-base) solid var(--color-primary);
+}
+
+.divider-line {
+    flex: 1;
+    height: var(--border-base);
+    background: var(--color-border-muted);
+    position: relative;
+    overflow: hidden;
+}
+
+/* scaleX sweep fill on the line */
+.divider-line::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--color-primary);
+    transform-origin: left center;
+    transform: scaleX(0.25);
+    opacity: 0.35;
+}
+
+.divider-num {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    color: transparent;
+    -webkit-text-stroke: var(--border-thin) var(--color-primary);
+    padding: 0 var(--space-5);
+    user-select: none;
+}
+
+
+
+
+
+
